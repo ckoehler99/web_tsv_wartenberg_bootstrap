@@ -16,6 +16,17 @@ jobs:
         with:
           path: repo
 
+      - name: Ensure remote directories exist
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            mkdir -p typo311-prod/typo3conf/ext/tsv_wartenberg_bootstrap/
+            mkdir -p typo311-prod/typo3conf/ext/tsv_wartenberg_bootstrap_v2/
+
       - name: Deploy v1 (Original)
         uses: ckoehler99/ssh-scp-deploy@master
         with:
