@@ -101,6 +101,12 @@
     @media (min-width: 992px) {
         .navbar-nav > li.nav-item:hover > .dropdown-menu {
             display: block;
+            // Bootstrap setzt top:100% nur via [data-bs-popper] (Klick-Toggle).
+            // Beim CSS-Hover fehlt das Attribut → Dropdown ueberlappt den Tab.
+            // Daher manuell positionieren: direkt unterhalb des nav-item.
+            top: 100%;
+            left: 0;
+            margin-top: 0;
         }
     }
 
@@ -170,26 +176,16 @@
 
     // ----------------------------------------------------------
     // Mega-Dropdown (grosse Menues wie Fussball Junioren)
-    // Multi-Column statt langer vertikaler Liste
+    // BP v15 nutzt display:grid mit --mainnavigation-dropdown-column-min-width.
+    // Wir setzen die min-width kleiner, damit mehr Spalten entstehen.
     // ----------------------------------------------------------
     @media (min-width: 992px) {
         .dropdown-menu-mega {
-            min-width: 28rem;
-            max-width: 40rem;
-            padding: 0.75rem;
+            --mainnavigation-dropdown-column-min-width: 10rem;
+            padding: 0.75rem 1rem;
 
-            .dropdown-nav {
-                columns: 2;
-                column-gap: 0.5rem;
-
-                > .nav-item {
-                    break-inside: avoid;
-                }
-            }
-
-            // Untermenues (Ebene 3) — nicht in eigener Spalte umbrechen
+            // Untermenues (Ebene 3)
             .dropdown-nav .dropdown-nav {
-                columns: 1;
                 padding-left: 0.75rem;
                 border-left: 2px solid rgba($tsv-green, 0.2);
                 margin: 0.25rem 0;
