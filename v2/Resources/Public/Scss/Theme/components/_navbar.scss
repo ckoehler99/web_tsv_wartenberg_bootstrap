@@ -42,9 +42,15 @@
     --bs-nav-link-color: #{$white};
     --bs-nav-link-hover-color: #{$white};
 
-    // Logo
+    // Logo — groesser und halbtransparent (Wasserzeichen-Effekt)
     .navbar-brand-image img {
-        max-height: 100%;
+        max-height: calc(var(--mainnavigation-nav-height) - 10px);
+        opacity: 0.85;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     // ----------------------------------------------------------
