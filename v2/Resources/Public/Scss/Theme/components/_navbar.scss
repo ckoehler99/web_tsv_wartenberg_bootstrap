@@ -4,31 +4,55 @@
 // --------------------------------------------------
 //
 // Bootstrap Package v15 rendert folgende HTML-Struktur:
-//   <header class="... navbar navbar-mainnavigation ...">
-//     <nav id="mainnavigation" class="collapse navbar-collapse">
-//       <ul class="navbar-nav">
-//         <li class="nav-item nav-style-simple">
-//           <a class="nav-link nav-link-main [active]">Hauptlink</a>
-//           <button class="nav-link nav-link-toggle" data-bs-toggle="dropdown">
-//           <div class="dropdown-menu dropdown-menu-simple">
-//             <ul class="dropdown-nav">
-//               <li class="nav-item">
-//                 <a class="nav-link nav-link-dropdown [active]">Sublink</a>
 //
-// WICHTIG: Dropdown-Eintraege sind .nav-link-dropdown, NICHT .dropdown-item!
+//   <header class="... navbar navbar-mainnavigation ...">
+//     <div class="container container-mainnavigation">
+//       <a class="navbar-brand navbar-brand-image">Logo</a>
+//       <button class="navbar-toggler">Hamburger</button>
+//       <nav id="mainnavigation" class="collapse navbar-collapse">
+//         <ul class="navbar-nav">
+//           <li class="nav-item nav-style-simple">
+//             <a class="nav-link nav-link-main [active]">Hauptlink</a>
+//             <button class="nav-link nav-link-toggle" data-bs-toggle="dropdown">
+//               <span class="nav-link-indicator"></span>    ← Der Dropdown-Pfeil!
+//             </button>
+//             <div class="dropdown-menu dropdown-menu-simple">
+//               <ul class="dropdown-nav">
+//                 <li class="nav-item">
+//                   <a class="nav-link nav-link-dropdown [active]">Sublink</a>
+//
+// WICHTIG:
+// - Dropdown-Eintraege sind .nav-link-dropdown, NICHT .dropdown-item!
+// - Der Dropdown-Pfeil ist .nav-link-indicator innerhalb .nav-link-toggle
+// - .nav-link-main und .nav-link-toggle sind Geschwister im gleichen <li>
 //
 
-// Navbar Grundfarben
+// ============================================================
+// Navbar Grundfarben & Layout
+// ============================================================
 .navbar-mainnavigation {
     background-color: $tsv-green;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
+    // Logo
     .navbar-brand-image img {
         max-height: 100%;
     }
 
-    // Hauptnavigation-Links (Ebene 1)
-    .navbar-nav > li > .nav-link {
+    // ----------------------------------------------------------
+    // Bootstrap CSS-Variablen ueberschreiben
+    // Damit Bootstrap Package die richtigen Farben nutzt
+    // ----------------------------------------------------------
+    --bs-navbar-color: #{$white};
+    --bs-navbar-hover-color: #{$white};
+    --bs-navbar-active-color: #{$white};
+    --bs-navbar-brand-color: #{$white};
+    --bs-navbar-brand-hover-color: #{$white};
+
+    // ----------------------------------------------------------
+    // Hauptnavigation-Links (Ebene 1) — .nav-link-main
+    // ----------------------------------------------------------
+    .navbar-nav > li > .nav-link-main {
         color: $white;
         font-weight: 500;
         transition: background-color 0.2s ease, color 0.2s ease;
@@ -53,19 +77,56 @@
         }
     }
 
+    // ----------------------------------------------------------
+    // Dropdown-Toggle-Button mit Pfeil — .nav-link-toggle
+    // Sitzt neben .nav-link-main als Geschwister-Element
+    // ----------------------------------------------------------
+    .navbar-nav > li > .nav-link-toggle {
+        color: $white;
+        background: transparent;
+        border: none;
+        padding: 0.5rem 0.4rem;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover,
+        &:focus {
+            color: $white;
+            background-color: rgba($white, 0.15);
+        }
+
+        // Der Pfeil/Indikator selbst
+        .nav-link-indicator {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 0.35em solid transparent;
+            border-right: 0.35em solid transparent;
+            border-top: 0.35em solid $white;
+            vertical-align: middle;
+        }
+    }
+
+    // ----------------------------------------------------------
     // Dropdown-Menue (Ebene 2)
+    // ----------------------------------------------------------
     .dropdown-menu {
         border: none;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         border-radius: $border-radius;
+        padding: 0.5rem 0;
 
         // Bootstrap Package nutzt .nav-link-dropdown statt .dropdown-item
         .nav-link-dropdown {
-            transition: background-color 0.15s ease;
-            padding: 0.35rem 1rem;
+            display: block;
+            color: $gray-800;
+            padding: 0.4rem 1rem;
+            transition: background-color 0.15s ease, color 0.15s ease;
+            text-decoration: none;
 
-            &.active,
-            &:active {
+            &.active {
                 color: $white;
                 background-color: $tsv-green-dark;
             }
@@ -73,7 +134,7 @@
             &:hover,
             &:focus {
                 color: $tsv-green-dark;
-                background-color: rgba($tsv-green, 0.08);
+                background-color: rgba($tsv-green, 0.1);
             }
         }
 
@@ -89,13 +150,15 @@
 
             &:hover,
             &:focus {
-                background-color: rgba($tsv-green, 0.08);
+                background-color: rgba($tsv-green, 0.1);
             }
         }
     }
 }
 
-// Mobile Toggler
+// ============================================================
+// Mobile Toggler (Hamburger-Button)
+// ============================================================
 .navbar-mainnavigation .navbar-toggler {
     border-color: rgba($white, 0.4);
 
@@ -104,10 +167,22 @@
     }
 }
 
-// Auch globale nav-link Selektoren setzen (wie v1),
-// damit aktive Zustaende auch ohne .navbar-mainnavigation-Wrapper greifen
-.navbar-nav .nav-link.active,
-.navbar-nav .nav-link.show {
+// ============================================================
+// Globale Fallback-Selektoren (wie v1)
+// Greifen auch wenn Bootstrap Package die Spezifitaet uebertrumpft
+// ============================================================
+.navbar-mainnavigation .navbar-nav .nav-link.active,
+.navbar-mainnavigation .navbar-nav .nav-link.show {
     color: $white;
     background-color: $tsv-green-dark;
+}
+
+// Alle nav-links in der Hauptnav weiss machen (Fallback)
+.navbar-mainnavigation .navbar-nav .nav-link {
+    color: $white;
+}
+
+// Pfeil-Indikator immer sichtbar machen (Fallback mit hoher Spezifitaet)
+.navbar-mainnavigation .navbar-nav .nav-link-toggle .nav-link-indicator {
+    border-top-color: $white;
 }
