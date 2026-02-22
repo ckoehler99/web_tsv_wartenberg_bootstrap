@@ -167,6 +167,35 @@
             }
         }
     }
+
+    // ----------------------------------------------------------
+    // Mega-Dropdown (grosse Menues wie Fussball Junioren)
+    // Multi-Column statt langer vertikaler Liste
+    // ----------------------------------------------------------
+    @media (min-width: 992px) {
+        .dropdown-menu-mega {
+            min-width: 28rem;
+            max-width: 40rem;
+            padding: 0.75rem;
+
+            .dropdown-nav {
+                columns: 2;
+                column-gap: 0.5rem;
+
+                > .nav-item {
+                    break-inside: avoid;
+                }
+            }
+
+            // Untermenues (Ebene 3) — nicht in eigener Spalte umbrechen
+            .dropdown-nav .dropdown-nav {
+                columns: 1;
+                padding-left: 0.75rem;
+                border-left: 2px solid rgba($tsv-green, 0.2);
+                margin: 0.25rem 0;
+            }
+        }
+    }
 }
 
 // ============================================================

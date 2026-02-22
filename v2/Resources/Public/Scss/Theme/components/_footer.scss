@@ -1,44 +1,31 @@
 //
 // TSV Wartenberg v2 — Footer
-// Nur eine Footer-Section sichtbar, kein doppelter Footer.
+// Kompakt, dunkler als Header, mit Social Media.
 // --------------------------------------------------
 
-// Footer Content Section — ist leer (keine Inhalte in den Spalten),
-// Bootstrap Package rendert sie trotzdem mit Hintergrundfarbe.
-// Deshalb ausblenden, damit kein gruener Leerblock erscheint.
+// Footer Content Section — leer, ausblenden
 .footer-section-content {
-    // Nur anzeigen wenn tatsaechlich Inhalt vorhanden
     &:has(.section-column:empty) {
         display: none;
     }
-    // Fallback fuer Browser ohne :has() — minimale Hoehe
     padding: 0;
     min-height: 0;
-
-    // Falls doch Inhalte hinzugefuegt werden:
-    a {
-        transition: color 0.2s ease, opacity 0.2s ease;
-
-        &:hover {
-            opacity: 0.85;
-        }
-    }
 }
 
-// Footer Meta Section — der eigentliche sichtbare Footer
+// Footer Meta Section — einziger sichtbarer Footer
+// Dunkleres Grau statt TSV-Gruen (Abgrenzung zum Header)
 .footer-section-meta {
-    background-color: $tsv-green-dark !important;
+    background-color: $gray-800 !important;
     border-top: none;
-    padding: 1.5rem 0;
+    padding: 0.75rem 0;
 
-    --frame-color: #{rgba($white, 0.9)};
-    --frame-background: #{$tsv-green-dark};
-    --frame-link-color: #d4edda;
+    --frame-color: #{rgba($white, 0.85)};
+    --frame-background: #{$gray-800};
+    --frame-link-color: #{rgba($white, 0.7)};
     --frame-link-hover-color: #{$white};
 
-    // Links im Footer hell und lesbar
     a {
-        color: #d4edda !important;
+        color: rgba($white, 0.7) !important;
         text-decoration: none;
 
         &:hover {
@@ -46,18 +33,23 @@
         }
     }
 
-    // Reihenfolge umkehren: Social Media oben, Copyright unten
-    // HTML: footer-info-section > [footer-meta, footer-copyright, footer-sociallinks]
+    // Reihenfolge: Social Media oben, Copyright unten
     .footer-info-section {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        gap: 0.4rem;
+
+        > * {
+            margin: 0 !important;
+        }
 
         .footer-sociallinks {
             order: 1;
         }
         .footer-copyright {
             order: 2;
-            margin-top: 1rem;
+            font-size: 0.85rem;
         }
         .footer-meta {
             order: 3;
@@ -65,29 +57,29 @@
     }
 }
 
-// Footer Container — kein graues row-Background
+// Footer Container
 footer .container .row {
     background-color: transparent;
 }
 
-// Social Media Links
+// Social Media Icons — kompakter
 .footer-sociallinks {
     a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 2.75rem;
-        height: 2.75rem;
+        width: 2.25rem;
+        height: 2.25rem;
         border-radius: 50%;
-        background: rgba($white, 0.15);
+        background: rgba($white, 0.12);
         color: $white !important;
-        margin: 0 0.25rem;
+        margin: 0 0.2rem;
         transition: background-color 0.2s ease, transform 0.2s ease;
 
         &:hover {
-            background: rgba($white, 0.3);
+            background: rgba($white, 0.25);
             color: $white !important;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
     }
 }

@@ -70,7 +70,7 @@ $border-radius:                     0.375rem !default;
 $border-radius-sm:                  0.25rem !default;
 $border-radius-lg:                  0.5rem !default;
 
-// Footer — nur meta-Section sichtbar (content-Section ist leer)
+// Footer — dunkelgrau statt TSV-Gruen (Abgrenzung zum gruenen Header)
 $footer-sections: () !default;
 $footer-sections: map-merge(
     (
@@ -80,9 +80,9 @@ $footer-sections: map-merge(
             link-color:             $tsv-green,
         ),
         meta: (
-            background:             $tsv-green-dark,
-            color:                  rgba($white, 0.9),
-            link-color:             #d4edda,
+            background:             $gray-800,
+            color:                  rgba($white, 0.85),
+            link-color:             rgba($white, 0.7),
         )
     ),
     $footer-sections
