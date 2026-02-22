@@ -2,6 +2,21 @@
 // TSV Wartenberg v2 — Navbar
 // Komplett in SCSS, kein separates custom.css noetig.
 // --------------------------------------------------
+//
+// Bootstrap Package v15 rendert folgende HTML-Struktur:
+//   <header class="... navbar navbar-mainnavigation ...">
+//     <nav id="mainnavigation" class="collapse navbar-collapse">
+//       <ul class="navbar-nav">
+//         <li class="nav-item nav-style-simple">
+//           <a class="nav-link nav-link-main [active]">Hauptlink</a>
+//           <button class="nav-link nav-link-toggle" data-bs-toggle="dropdown">
+//           <div class="dropdown-menu dropdown-menu-simple">
+//             <ul class="dropdown-nav">
+//               <li class="nav-item">
+//                 <a class="nav-link nav-link-dropdown [active]">Sublink</a>
+//
+// WICHTIG: Dropdown-Eintraege sind .nav-link-dropdown, NICHT .dropdown-item!
+//
 
 // Navbar Grundfarben
 .navbar-mainnavigation {
@@ -12,7 +27,7 @@
         max-height: 100%;
     }
 
-    // Nav-Links
+    // Hauptnavigation-Links (Ebene 1)
     .navbar-nav > li > .nav-link {
         color: $white;
         font-weight: 500;
@@ -32,18 +47,37 @@
             background-color: $tsv-green-dark;
         }
 
-        // Hover-Indikator unten
+        // Hover-Indikator unten (Bootstrap Package Feature)
         &:before {
             background-color: $tsv-green-dark;
         }
     }
 
-    // Dropdown
+    // Dropdown-Menue (Ebene 2)
     .dropdown-menu {
         border: none;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         border-radius: $border-radius;
 
+        // Bootstrap Package nutzt .nav-link-dropdown statt .dropdown-item
+        .nav-link-dropdown {
+            transition: background-color 0.15s ease;
+            padding: 0.35rem 1rem;
+
+            &.active,
+            &:active {
+                color: $white;
+                background-color: $tsv-green-dark;
+            }
+
+            &:hover,
+            &:focus {
+                color: $tsv-green-dark;
+                background-color: rgba($tsv-green, 0.08);
+            }
+        }
+
+        // Fallback: falls .dropdown-item doch irgendwo genutzt wird
         .dropdown-item {
             transition: background-color 0.15s ease;
 
@@ -68,4 +102,12 @@
     .navbar-toggler-icon {
         filter: invert(1);
     }
+}
+
+// Auch globale nav-link Selektoren setzen (wie v1),
+// damit aktive Zustaende auch ohne .navbar-mainnavigation-Wrapper greifen
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+    color: $white;
+    background-color: $tsv-green-dark;
 }
