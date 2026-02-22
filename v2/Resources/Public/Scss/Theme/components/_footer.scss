@@ -1,12 +1,21 @@
 //
 // TSV Wartenberg v2 — Footer
-// Dunkelgruen statt Grau, mit Social Media Bereich.
+// Nur eine Footer-Section sichtbar, kein doppelter Footer.
 // --------------------------------------------------
 
-// Footer Content Section
+// Footer Content Section — ist leer (keine Inhalte in den Spalten),
+// Bootstrap Package rendert sie trotzdem mit Hintergrundfarbe.
+// Deshalb ausblenden, damit kein gruener Leerblock erscheint.
 .footer-section-content {
-    padding: 2.5rem 0;
+    // Nur anzeigen wenn tatsaechlich Inhalt vorhanden
+    &:has(.section-column:empty) {
+        display: none;
+    }
+    // Fallback fuer Browser ohne :has() — minimale Hoehe
+    padding: 0;
+    min-height: 0;
 
+    // Falls doch Inhalte hinzugefuegt werden:
     a {
         transition: color 0.2s ease, opacity 0.2s ease;
 
@@ -16,19 +25,47 @@
     }
 }
 
-// Footer Meta Section
+// Footer Meta Section — der eigentliche sichtbare Footer
 .footer-section-meta {
-    background-color: $tsv-green-dark;
-    border-top: 1px solid rgba($white, 0.15);
-    padding: 1rem 0;
+    background-color: $tsv-green-dark !important;
+    border-top: none;
+    padding: 1.5rem 0;
 
     --frame-color: #{rgba($white, 0.9)};
     --frame-background: #{$tsv-green-dark};
     --frame-link-color: #d4edda;
     --frame-link-hover-color: #{$white};
+
+    // Links im Footer hell und lesbar
+    a {
+        color: #d4edda !important;
+        text-decoration: none;
+
+        &:hover {
+            color: $white !important;
+        }
+    }
+
+    // Meta-Menue
+    .meta-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+
+        a {
+            color: #d4edda !important;
+
+            &:hover {
+                color: $white !important;
+            }
+        }
+    }
 }
 
-// Footer Container — kein graues row-Background mehr
+// Footer Container — kein graues row-Background
 footer .container .row {
     background-color: transparent;
 }
@@ -42,13 +79,14 @@ footer .container .row {
         width: 2.75rem;
         height: 2.75rem;
         border-radius: 50%;
-        background: rgba($white, 0.1);
-        color: $white;
+        background: rgba($white, 0.15);
+        color: $white !important;
         margin: 0 0.25rem;
         transition: background-color 0.2s ease, transform 0.2s ease;
 
         &:hover {
-            background: rgba($white, 0.2);
+            background: rgba($white, 0.3);
+            color: $white !important;
             transform: translateY(-2px);
         }
     }

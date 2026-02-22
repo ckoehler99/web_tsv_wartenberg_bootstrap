@@ -5,16 +5,14 @@
 // Bootstrap Package v15 HTML-Struktur:
 //
 //   <header class="... navbar navbar-mainnavigation navbar-default ...">
-//                                                     ^^^^^^^^^^^^^^
-//     BP setzt .navbar-default auf background: white !important
-//     → Muss mit .navbar-default.navbar-mainnavigation !important ueberschrieben werden
+//     BP setzt .navbar-default { background: white !important }
 //
 //     <nav id="mainnavigation" class="collapse navbar-collapse">
 //       <ul class="navbar-nav">
 //         <li class="nav-item nav-style-simple">
 //           <a class="nav-link nav-link-main [active]">Hauptlink</a>
 //           <button class="nav-link nav-link-toggle" data-bs-toggle="dropdown">
-//             <span class="nav-link-indicator"></span>  ← Dropdown-Pfeil
+//             <span class="nav-link-indicator"></span>
 //           </button>
 //           <div class="dropdown-menu dropdown-menu-simple">
 //             <ul class="dropdown-nav">
@@ -22,8 +20,8 @@
 //
 
 // ============================================================
-// 1. NAVBAR HINTERGRUND — muss !important nutzen, weil
-//    Bootstrap Package .navbar-default auf white !important setzt
+// 1. NAVBAR HINTERGRUND
+//    .navbar-default setzt white !important → wir brauchen auch !important
 // ============================================================
 .navbar-default.navbar-mainnavigation {
     background-color: $tsv-green !important;
@@ -31,7 +29,7 @@
 }
 
 // ============================================================
-// 2. NAVBAR INHALT — CSS-Variablen + direkte Farben
+// 2. NAVBAR INHALT
 // ============================================================
 .navbar-mainnavigation {
 
@@ -55,7 +53,7 @@
     .navbar-nav > li > .nav-link-main {
         color: $white !important;
         font-weight: 500;
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition: background-color 0.2s ease;
         border-radius: $border-radius-sm;
 
         &:hover,
@@ -76,7 +74,7 @@
     }
 
     // ----------------------------------------------------------
-    // Dropdown-Toggle-Button (Pfeil)
+    // Dropdown-Toggle-Button (Pfeil neben dem Link)
     // ----------------------------------------------------------
     .navbar-nav > li > .nav-link-toggle {
         color: $white !important;
@@ -90,76 +88,68 @@
             background-color: rgba($white, 0.15);
         }
 
-        // Der Pfeil selbst (Bootstrap Package nutzt border-basiertes Chevron)
+        // Pfeil-Chevron (BP nutzt border-basiertes Chevron via :before)
         .nav-link-indicator:before {
             border-color: $white !important;
         }
     }
 
     // ----------------------------------------------------------
-    // Hover-Dropdown fuer Desktop (ab lg Breakpoint)
-    // Menue klappt automatisch auf beim Ueberfahren
+    // Hover-Dropdown fuer Desktop
+    // Oeffnet das Menue beim Ueberfahren, direkt unter dem Link
     // ----------------------------------------------------------
     @media (min-width: 992px) {
-        .navbar-nav > li.nav-item:hover > .dropdown-menu,
-        .navbar-nav > li.nav-item:focus-within > .dropdown-menu {
+        .navbar-nav > li.nav-item:hover > .dropdown-menu {
             display: block;
-            margin-top: 0;
-        }
-
-        // Sanfte Animation
-        .navbar-nav .dropdown-menu {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s ease, visibility 0.2s ease;
-            display: block !important;
-            pointer-events: none;
-        }
-        .navbar-nav > li.nav-item:hover > .dropdown-menu,
-        .navbar-nav > li.nav-item:focus-within > .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
         }
     }
 
     // ----------------------------------------------------------
-    // Dropdown-Menue (Ebene 2)
+    // Dropdown-Menue (Ebene 2) — weisser Hintergrund, dunkler Text
     // ----------------------------------------------------------
     .dropdown-menu {
-        border: none;
+        background-color: $white !important;
+        border: 1px solid rgba(0, 0, 0, 0.08);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         border-radius: $border-radius;
         padding: 0.5rem 0;
 
-        // Bootstrap Package nutzt .nav-link-dropdown (nicht .dropdown-item)
+        // Dropdown-Eintraege (BP: .nav-link-dropdown, NICHT .dropdown-item)
         .nav-link-dropdown {
             display: block;
-            color: $gray-800;
+            color: $gray-800 !important;
             padding: 0.4rem 1rem;
             transition: background-color 0.15s ease, color 0.15s ease;
             text-decoration: none;
 
+            .nav-link-text {
+                color: inherit;
+            }
+
             &.active {
-                color: $white;
-                background-color: $tsv-green-dark;
+                color: $white !important;
+                background-color: $tsv-green;
+
+                .nav-link-text {
+                    color: inherit;
+                }
             }
 
             &:hover,
             &:focus {
-                color: $tsv-green-dark;
+                color: $tsv-green-dark !important;
                 background-color: rgba($tsv-green, 0.1);
             }
         }
 
         // Fallback
         .dropdown-item {
-            transition: background-color 0.15s ease;
+            color: $gray-800;
 
             &.active,
             &:active {
                 color: $white;
-                background-color: $tsv-green-dark;
+                background-color: $tsv-green;
             }
 
             &:hover,
@@ -171,7 +161,7 @@
 }
 
 // ============================================================
-// 3. MOBILE TOGGLER (Hamburger)
+// 3. MOBILE TOGGLER
 // ============================================================
 .navbar-mainnavigation .navbar-toggler {
     border-color: rgba($white, 0.4);
@@ -182,7 +172,7 @@
 }
 
 // ============================================================
-// 4. FALLBACK-SELEKTOREN mit hoher Spezifizitaet
+// 4. FALLBACK-SELEKTOREN
 // ============================================================
 .navbar-default.navbar-mainnavigation .navbar-nav .nav-link {
     color: $white !important;
@@ -196,4 +186,17 @@
 
 .navbar-default.navbar-mainnavigation .navbar-nav .nav-link-toggle .nav-link-indicator:before {
     border-color: $white !important;
+}
+
+// Dropdown-Inhalt: immer dunkle Schrift auf weiss
+.navbar-mainnavigation .dropdown-menu .nav-link {
+    color: $gray-800 !important;
+}
+.navbar-mainnavigation .dropdown-menu .nav-link.active {
+    color: $white !important;
+    background-color: $tsv-green;
+}
+.navbar-mainnavigation .dropdown-menu .nav-link:hover {
+    color: $tsv-green-dark !important;
+    background-color: rgba($tsv-green, 0.1);
 }
