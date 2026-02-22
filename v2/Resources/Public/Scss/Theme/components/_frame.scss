@@ -1,0 +1,128 @@
+//
+// Frame – TSV Wartenberg
+// Modernisierte Content-Card-Klassen
+// --------------------------------------------------
+
+.frame {
+    position: relative;
+    margin-top: var(--frame-outer-spacing-before);
+    margin-bottom: var(--frame-outer-spacing-after);
+    padding-top: var(--frame-spacing);
+    padding-bottom: var(--frame-spacing);
+    color: var(--frame-color);
+    background: var(--frame-background);
+    --frame-spacing: var(--frame-spacing-xs);
+}
+
+//
+// Content Cards (ehem. frame-well Varianten)
+// --------------------------------------------------
+.frame-well {
+    background-color: $gray-100;
+    border: 1px solid $gray-300;
+    border-left: 4px solid $tsv-green;
+    border-radius: $border-radius;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba($black, 0.06);
+
+    blockquote {
+        border-color: rgba($black, 0.15);
+    }
+}
+
+.frame-well-lg {
+    padding: 2rem;
+    border-radius: $border-radius-lg;
+    border: 1px solid $gray-300;
+    border-left: 4px solid $tsv-green;
+}
+
+.frame-well-sm {
+    padding: 0.75rem;
+    border-radius: $border-radius-sm;
+    background-color: lighten($tsv-green-light, 40%);
+    border: 1px solid $gray-300;
+    border-left: 3px solid $tsv-green-light;
+}
+
+//
+// Info-Card (ehem. frame-hellblau)
+// --------------------------------------------------
+.frame-hellblau {
+    min-height: auto;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid lighten($tsv-blue, 40%);
+    border-left: 4px solid $tsv-blue;
+    border-radius: $border-radius;
+    background-color: lighten($tsv-blue, 52%);
+    box-shadow: 0 1px 3px rgba($black, 0.06);
+}
+
+//
+// Rahmen (ehem. frame-swRahmen)
+// --------------------------------------------------
+.frame-swRahmen {
+    background-color: $white;
+    border: 1px solid $gray-300;
+    border-radius: $border-radius;
+    padding: 1rem;
+}
+
+//
+// Hero-Card (ehem. frame-jumbotron)
+// --------------------------------------------------
+.frame-jumbotron {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    color: inherit;
+    background-color: $gray-100;
+    border: 1px solid $gray-300;
+    border-radius: $border-radius-lg;
+
+    h2,
+    .h2 {
+        color: $tsv-green-dark;
+        margin-bottom: 1rem;
+    }
+}
+
+//
+// Einrückung (ehem. frame-indent)
+// --------------------------------------------------
+.frame-indent {
+    color: inherit;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0.5rem;
+}
+
+//
+// Linke Einrückung (ehem. frame-intend-left)
+// --------------------------------------------------
+.frame-intend-left {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    border: 1px solid darken($gray-200, 5%);
+    border-left: 4px solid $tsv-green-light;
+    border-radius: $border-radius;
+    background-color: lighten($warning, 32%);
+    box-shadow: 0 1px 3px rgba($black, 0.06);
+
+    blockquote {
+        border-color: rgba($black, 0.15);
+    }
+}
+
+.frame-intend-left-lg {
+    padding: 2rem;
+    background-color: lighten($warning, 32%);
+    border-radius: $border-radius-lg;
+}
+
+.frame-intend-left-sm {
+    padding: 0.75rem;
+    border-radius: $border-radius-sm;
+    background-color: lighten($tsv-green-light, 40%);
+}

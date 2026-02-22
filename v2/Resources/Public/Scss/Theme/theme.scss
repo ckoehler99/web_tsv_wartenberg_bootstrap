@@ -1,0 +1,74 @@
+//
+// TSV Wartenberg – Theme
+//
+
+//
+// 1. Variables (muss vor dem Bootstrap-Import stehen)
+//
+@import "variables";
+
+//
+// 2. Bootstrap Package Theme
+//
+@import "EXT:bootstrap_package/Resources/Public/Scss/bootstrap5/theme";
+
+//
+// 3. Custom Components
+//
+@import "components/navbar";
+@import "components/frame";
+@import "components/footer";
+
+//
+// 4. Footer Meta Override
+//    (wird in custom.css via CSS Custom Properties gesteuert,
+//     hier als SCSS-Fallback falls custom.css nicht geladen wird)
+//
+.footer-section-meta {
+    background-color: $gray-100;
+    --frame-color: #{$gray-900};
+    --frame-background: #{$gray-100};
+    --frame-link-color: #{$tsv-blue};
+    --frame-link-hover-color: #{darken($tsv-blue, 8%)};
+}
+
+//
+// 5. Allgemeine Verbesserungen
+//
+
+// Sanftere Übergänge global
+a {
+    transition: color 0.2s ease;
+}
+
+// Card-Elemente vom Bootstrap Package aufwerten
+.card {
+    border: none;
+    box-shadow: 0 1px 3px rgba($black, 0.08);
+    border-radius: $border-radius;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba($black, 0.12);
+    }
+}
+
+// Content-Element Abstände optimieren
+.frame-type-textmedia,
+.frame-type-textpic,
+.frame-type-image {
+    img {
+        border-radius: $border-radius;
+    }
+}
+
+// Breadcrumb dezenter gestalten
+.breadcrumb {
+    background-color: transparent;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+
+    .breadcrumb-item + .breadcrumb-item::before {
+        color: $gray-400;
+    }
+}

@@ -1,0 +1,88 @@
+//
+// Navbar – TSV Wartenberg
+// Bootstrap 5 kompatibel
+// --------------------------------------------------
+
+// Navbar Brand
+.navbar-mainnavigation .navbar-brand-image img {
+    max-height: 100%;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
+// Navbar Hintergrund & Links
+.navbar-mainnavigation {
+    background-color: $tsv-green;
+    box-shadow: 0 2px 8px rgba($black, 0.12);
+
+    .navbar-nav > li > .nav-link {
+        color: $white;
+        font-weight: 500;
+        padding: 0.75rem 1rem;
+        transition: color 0.2s ease, background-color 0.2s ease;
+        border-radius: $border-radius-sm;
+
+        &:hover,
+        &:focus {
+            color: $white;
+            background-color: $tsv-green-dark;
+        }
+    }
+
+    .navbar-nav > .active > .nav-link,
+    .navbar-nav > .active > .nav-link:hover,
+    .navbar-nav > .active > .nav-link:focus {
+        color: $white;
+        background-color: $tsv-green-dark;
+    }
+}
+
+// Nav-Link Underline-Effekt auf Desktop
+@include media-breakpoint-up('lg') {
+    .navbar-mainnavigation .navbar-nav > li > .nav-link::before {
+        background-color: $white;
+        height: 2px;
+        border-radius: 1px;
+    }
+}
+
+// Dropdown-Menü Styling
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 16px rgba($black, 0.12);
+    border-radius: $border-radius;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &.active,
+    &:active {
+        color: $white;
+        background-color: $tsv-green-dark;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: rgba($tsv-green, 0.08);
+        color: $tsv-green-dark;
+    }
+}
+
+// Navbar Toggler (Mobile)
+.navbar-mainnavigation .navbar-toggler {
+    border-color: rgba($white, 0.3);
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba($white, 0.25);
+    }
+
+    .navbar-toggler-icon {
+        filter: brightness(0) invert(1);
+    }
+}

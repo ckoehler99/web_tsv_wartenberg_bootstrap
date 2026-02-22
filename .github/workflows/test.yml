@@ -1,4 +1,4 @@
-name: MasterCI
+name: TestCI
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - test
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     name: Build and Deploy
 
@@ -14,13 +14,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: main      
-      - name: Publish
+          path: repo
+
+      - name: Deploy v1 (Original)
         uses: ckoehler99/ssh-scp-deploy@master
         with:
-          src: ./main/*
+          src: ./repo/v1/*
           host: ${{ secrets.SSH_HOST }}
           remote: typo311-test/typo3conf/ext/tsv_wartenberg_bootstrap/
+          port: ${{ secrets.SSH_PORT }}
+          user: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+
+      - name: Deploy v2 (Modernisiert)
+        uses: ckoehler99/ssh-scp-deploy@master
+        with:
+          src: ./repo/v2/*
+          host: ${{ secrets.SSH_HOST }}
+          remote: typo311-test/typo3conf/ext/tsv_wartenberg_bootstrap_v2/
           port: ${{ secrets.SSH_PORT }}
           user: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
