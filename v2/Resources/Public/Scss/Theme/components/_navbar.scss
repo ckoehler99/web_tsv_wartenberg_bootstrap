@@ -76,22 +76,9 @@
     // ----------------------------------------------------------
     // Dropdown-Toggle-Button (Pfeil neben dem Link)
     // ----------------------------------------------------------
+    // Dropdown-Toggle-Button (Pfeil) ausblenden — bei Hover-Dropdown ueberfluessig
     .navbar-nav > li > .nav-link-toggle {
-        color: $white !important;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-
-        &:hover,
-        &:focus {
-            background-color: rgba($white, 0.15);
-        }
-
-        // Pfeil-Chevron (BP nutzt border-basiertes Chevron via :before)
-        .nav-link-indicator:before {
-            border-color: $white !important;
-        }
+        display: none;
     }
 
     // ----------------------------------------------------------
@@ -222,9 +209,7 @@
     background-color: $tsv-green-dark;
 }
 
-.navbar-default.navbar-mainnavigation .navbar-nav .nav-link-toggle .nav-link-indicator:before {
-    border-color: $white !important;
-}
+// Toggle-Button ist ausgeblendet (display:none), Fallback entfernt.
 
 // Dropdown-Inhalt: dunkle Schrift auf weiss (hohe Spezifizitaet)
 .navbar-default.navbar-mainnavigation .dropdown-menu .nav-link {
