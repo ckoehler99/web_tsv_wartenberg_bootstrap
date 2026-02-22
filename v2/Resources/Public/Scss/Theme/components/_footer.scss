@@ -18,13 +18,13 @@
 
 // Footer Meta Section
 .footer-section-meta {
-    background-color: darken($tsv-green-dark, 5%);
-    border-top: 1px solid rgba($white, 0.1);
+    background-color: $tsv-green-dark;
+    border-top: 1px solid rgba($white, 0.15);
     padding: 1rem 0;
 
-    --frame-color: #{rgba($white, 0.8)};
-    --frame-background: #{darken($tsv-green-dark, 5%)};
-    --frame-link-color: #{$tsv-green-light};
+    --frame-color: #{rgba($white, 0.9)};
+    --frame-background: #{$tsv-green-dark};
+    --frame-link-color: #d4edda;
     --frame-link-hover-color: #{$white};
 }
 

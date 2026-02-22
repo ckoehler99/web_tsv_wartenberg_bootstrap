@@ -25,9 +25,6 @@ page:
     partialRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Partials/Page/'
     templateRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Templates/Page/'
   theme:
-    navigation:
-      type: top
-      style: default
     breadcrumb:
       enableLevel: 1
     socialmedia:
