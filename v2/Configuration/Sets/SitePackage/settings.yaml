@@ -30,6 +30,12 @@ page:
     socialmedia:
       enable: true
       channels:
+        facebook:
+          label: Facebook
+          url: 'https://www.facebook.com/tsvwartenberg/'
+        instagram:
+          label: Instagram
+          url: 'https://www.instagram.com/tsv_wartenberg/'
         youtube:
           label: YouTube
           url: 'https://www.youtube.com/@TSVWartenberg'
@@ -42,6 +48,6 @@ page:
       enable: false
     copyright:
       enable: true
-      text: '<p class="mb-0"><a href="/footer/impressum-des-tsv-wartenbergs">Impressum</a> <span class="mx-3">|</span> <a href="/footer/datenschutz">Datenschutz</a> <span class="mx-3">|</span> <a href="/typo3">Login</a></p>'
+      text: '<p class="mb-0"><a href="/impressum-des-tsv-wartenbergs.html">Impressum</a> <span class="mx-3">|</span> <a href="/datenschutzerklaerung.html">Datenschutz</a> <span class="mx-3">|</span> <a href="/typo3">Login</a></p>'
     meta:
       navigationValue: ''

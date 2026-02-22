@@ -46,21 +46,21 @@
         }
     }
 
-    // Meta-Menue
-    .meta-menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    // Reihenfolge umkehren: Social Media oben, Copyright unten
+    // HTML: footer-info-section > [footer-meta, footer-copyright, footer-sociallinks]
+    .footer-info-section {
         display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
+        flex-direction: column;
 
-        a {
-            color: #d4edda !important;
-
-            &:hover {
-                color: $white !important;
-            }
+        .footer-sociallinks {
+            order: 1;
+        }
+        .footer-copyright {
+            order: 2;
+            margin-top: 1rem;
+        }
+        .footer-meta {
+            order: 3;
         }
     }
 }
