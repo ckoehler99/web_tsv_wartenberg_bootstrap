@@ -1,128 +1,78 @@
 //
-// Frame – TSV Wartenberg
-// Modernisierte Content-Card-Klassen
+// TSV Wartenberg v2 — Frame Backgrounds
+// Konsistente Farben, modernes Styling mit Schatten und Akzenten.
+// Keine Duplikation mit custom.css.
 // --------------------------------------------------
 
-.frame {
-    position: relative;
-    margin-top: var(--frame-outer-spacing-before);
-    margin-bottom: var(--frame-outer-spacing-after);
-    padding-top: var(--frame-spacing);
-    padding-bottom: var(--frame-spacing);
-    color: var(--frame-color);
-    background: var(--frame-background);
-    --frame-spacing: var(--frame-spacing-xs);
+// Primary: Weiss auf TSV-Gruen
+.frame-background-primary {
+    --frame-color: #{$white};
+    --frame-background: #{$primary};
+    --frame-link-color: #{$gray-200};
+    --frame-link-hover-color: #{$white};
 }
 
-//
-// Content Cards (ehem. frame-well Varianten)
-// --------------------------------------------------
-.frame-well {
-    background-color: $gray-100;
-    border: 1px solid $gray-300;
-    border-left: 4px solid $tsv-green;
-    border-radius: $border-radius;
-    padding: 1.25rem;
-    box-shadow: 0 1px 3px rgba($black, 0.06);
+// Secondary: Weiss auf TSV-Blau
+.frame-background-secondary {
+    --frame-color: #{$white};
+    --frame-background: #{$secondary};
+    --frame-link-color: #{$gray-200};
+    --frame-link-hover-color: #{$white};
+}
 
-    blockquote {
-        border-color: rgba($black, 0.15);
+// Tertiary: Dunkel auf Hellgruen
+.frame-background-tertiary {
+    --frame-color: #{$gray-900};
+    --frame-background: #{lighten($tsv-green-light, 30%)};
+    --frame-link-color: #{$tsv-green-dark};
+    --frame-link-hover-color: #{darken($tsv-green-dark, 10%)};
+}
+
+// Quaternary: Dunkel auf Hellgrau
+.frame-background-quaternary {
+    --frame-color: #{$gray-900};
+    --frame-background: #{$gray-200};
+    --frame-link-color: #{$tsv-blue};
+    --frame-link-hover-color: #{darken($tsv-blue, 10%)};
+}
+
+// Light: Dunkel auf Hellgrau
+.frame-background-light {
+    --frame-color: #{$black};
+    --frame-background: #{$gray-100};
+    --frame-link-color: #{$tsv-blue};
+    --frame-link-hover-color: #{darken($tsv-blue, 10%)};
+}
+
+// Dark: Weiss auf Dunkelgrau
+.frame-background-dark {
+    --frame-color: #{$white};
+    --frame-background: #{$gray-800};
+    --frame-link-color: #{$gray-200};
+    --frame-link-hover-color: #{$white};
+}
+
+// Moderne Frame-Verbesserungen
+.frame-type-default,
+.frame-type-text,
+.frame-type-textmedia,
+.frame-type-image {
+    .frame-inner {
+        border-radius: $border-radius;
     }
 }
 
-.frame-well-lg {
-    padding: 2rem;
-    border-radius: $border-radius-lg;
-    border: 1px solid $gray-300;
-    border-left: 4px solid $tsv-green;
-}
-
-.frame-well-sm {
-    padding: 0.75rem;
-    border-radius: $border-radius-sm;
-    background-color: lighten($tsv-green-light, 40%);
-    border: 1px solid $gray-300;
-    border-left: 3px solid $tsv-green-light;
-}
-
-//
-// Info-Card (ehem. frame-hellblau)
-// --------------------------------------------------
-.frame-hellblau {
-    min-height: auto;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid lighten($tsv-blue, 40%);
-    border-left: 4px solid $tsv-blue;
-    border-radius: $border-radius;
-    background-color: lighten($tsv-blue, 52%);
-    box-shadow: 0 1px 3px rgba($black, 0.06);
-}
-
-//
-// Rahmen (ehem. frame-swRahmen)
-// --------------------------------------------------
-.frame-swRahmen {
-    background-color: $white;
-    border: 1px solid $gray-300;
-    border-radius: $border-radius;
-    padding: 1rem;
-}
-
-//
-// Hero-Card (ehem. frame-jumbotron)
-// --------------------------------------------------
-.frame-jumbotron {
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    color: inherit;
-    background-color: $gray-100;
-    border: 1px solid $gray-300;
-    border-radius: $border-radius-lg;
-
-    h2,
-    .h2 {
-        color: $tsv-green-dark;
-        margin-bottom: 1rem;
+// Well-Frames mit Akzent-Border
+.frame-layout-1 {
+    .frame-inner {
+        border-left: 4px solid $tsv-green;
+        padding-left: 1.5rem;
     }
 }
 
-//
-// Einrückung (ehem. frame-indent)
-// --------------------------------------------------
-.frame-indent {
-    color: inherit;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 0.5rem;
-}
-
-//
-// Linke Einrückung (ehem. frame-intend-left)
-// --------------------------------------------------
-.frame-intend-left {
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-    border: 1px solid darken($gray-200, 5%);
-    border-left: 4px solid $tsv-green-light;
-    border-radius: $border-radius;
-    background-color: lighten($warning, 32%);
-    box-shadow: 0 1px 3px rgba($black, 0.06);
-
-    blockquote {
-        border-color: rgba($black, 0.15);
+.frame-layout-2 {
+    .frame-inner {
+        border-left: 4px solid $tsv-blue;
+        padding-left: 1.5rem;
     }
-}
-
-.frame-intend-left-lg {
-    padding: 2rem;
-    background-color: lighten($warning, 32%);
-    border-radius: $border-radius-lg;
-}
-
-.frame-intend-left-sm {
-    padding: 0.75rem;
-    border-radius: $border-radius-sm;
-    background-color: lighten($tsv-green-light, 40%);
 }

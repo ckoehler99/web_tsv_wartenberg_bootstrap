@@ -1,0 +1,9 @@
+page {
+    includeCSS {
+        theme = EXT:tsvwartenberg_modern/Resources/Public/Scss/Theme/theme.scss
+    }
+
+    includeJSFooter {
+        tsvwartenberg_scripts = EXT:tsvwartenberg_modern/Resources/Public/JavaScript/main.js
+    }
+}

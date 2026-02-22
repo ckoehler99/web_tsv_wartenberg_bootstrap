@@ -1,22 +1,19 @@
 <?php
 
-/**
- * Extension Manager/Repository config file for ext "tsv_wartenberg_bootstrap".
- */
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'tsv-wartenberg-bootstrap',
+    'title' => 'tsvwartenberg',
     'description' => '',
     'category' => 'templates',
     'constraints' => [
         'depends' => [
-            'bootstrap_package' => '12.0.0-12.9.99',
+            'bootstrap_package' => '15.0.0-15.99.99',
         ],
         'conflicts' => [
         ],
     ],
     'autoload' => [
         'psr-4' => [
-            'TsvWartenberg\\TsvWartenbergBootstrap\\' => 'Classes',
+            'Tsvwartenberg\\Tsvwartenberg\\' => 'Classes',
         ],
     ],
     'state' => 'stable',
@@ -24,7 +21,7 @@ $EM_CONF[$_EXTKEY] = [
     'createDirs' => '',
     'clearCacheOnLoad' => 1,
     'author' => 'Christian Köhler',
-    'author_email' => 'ckoehler@outlook.com',
-    'author_company' => 'TSV Wartenberg',
+    'author_email' => 'ckoehler99@gmail.com',
+    'author_company' => 'tsvwartenberg',
     'version' => '1.0.0',
 ];

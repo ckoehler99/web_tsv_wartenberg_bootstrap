@@ -1,0 +1,4 @@
+name: tsvwartenberg/tsvwartenberg
+label: 'tsvwartenberg'
+dependencies:
+  - bootstrap-package/full

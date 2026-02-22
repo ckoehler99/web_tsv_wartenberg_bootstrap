@@ -1,33 +1,37 @@
-# TSV Wartenberg – Sitepackages
+# TSV Wartenberg – Sitepackages (TYPO3 v13)
 
 Monorepo fuer die TYPO3-Sitepackages von [tsv-wartenberg.de](https://www.tsv-wartenberg.de/).
 
 ## Struktur
 
 ```
-v1/   tsv_wartenberg_bootstrap       (aktuelles/originales Design)
-v2/   tsv_wartenberg_bootstrap_v2    (modernisiertes Design)
+v1/   tsvwartenberg           (aktuelles/originales Design)
+v2/   tsvwartenberg_modern    (modernisiertes Design)
 ```
+
+Beide Sitepackages nutzen TYPO3 v13 mit Site Sets und Bootstrap Package v15.
 
 ## Umschalten auf dem Server
 
 ```bash
-# Zu v2 (neues Design) wechseln:
-php vendor/bin/typo3 extension:deactivate tsv_wartenberg_bootstrap
-php vendor/bin/typo3 extension:activate tsv_wartenberg_bootstrap_v2
-php vendor/bin/typo3 cache:flush
+# v2 als Composer-Package einrichten (einmalig):
+composer config repositories.tsv-modern path packages/tsvwartenberg_modern
+composer require tsvwartenberg/tsvwartenberg-modern:@dev
 
-# Zurueck zu v1 (altes Design):
-php vendor/bin/typo3 extension:deactivate tsv_wartenberg_bootstrap_v2
-php vendor/bin/typo3 extension:activate tsv_wartenberg_bootstrap
+# Im TYPO3-Backend: Sites > Site Configuration
+# Site Set von "tsvwartenberg" auf "tsvwartenberg-modern" aendern
+
+# Cache leeren:
 php vendor/bin/typo3 cache:flush
 ```
 
-Wichtig: Im TypoScript-Template (Web > Template > Includes) muss das
-Static Include zur jeweils aktiven Extension passen.
+## Zurueck zu v1
+
+Im TYPO3-Backend die Site Configuration wieder auf das originale
+Site Set "tsvwartenberg/tsvwartenberg" umstellen und Cache leeren.
 
 ## Deployment
 
 Beide Extensions werden automatisch per GitHub Action deployed:
-- Push auf `main` → Prod-Server
-- Push auf `test` → Test-Server
+- Push auf `main` → typo313-prod
+- Push auf `test` → typo313-test

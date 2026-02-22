@@ -1,7 +1,6 @@
 //
 // Variables
 //
-
 //
 // Color system
 // --------------------------------------------------
@@ -17,22 +16,30 @@ $gray-800:                          #313131 !default;
 $gray-900:                          #212121 !default;
 $black:                             #000000 !default;
 
-$primary:                           #2a9d8f !default;
-$secondary:                         #212121 !default;
-$tertiary:                          #f4a261 !default;
-$quaternary:                        #e9c46a !default;
+$primary:                           #014876; // dunkelblau
+$secondary:                         #c5e5e5; // hellblau
+$tertiary:                          #f4a261; // hellbraun, ocker
+$quaternary:                        #f0f0c0; // blass gelb wie frame well
 
-$default:                           #eaebec !default;
-$success:                           #5cb85c !default;
-$info:                              #319fc0 !default;
-$warning:                           #f0ad4e !default;
-$danger:                            #d9534f !default;
+$tsv_gruen:                         #009120 !default; //grün
+$tsv_dunkelgruen:                   #006813 !default; //dunkelgrün
+$tsv_gelb:                          #ffff00 !default; //gelb
+$bev_dunkelblau:                    #0C2CBB !default; //dunkelblau
+$bev_hellblau:                      #DBFFFF !default; //hellblau
+$blassgruen:                        #C9FEC2 !default;
+$dunkelgrün:                        #2b542c !default;
+
+$default:                           #eaebec !default; // fast weiß
+$success:                           #5cb85c !default; //
+$info:                              #319fc0 !default; // grün
+$warning:                           #f0ad4e !default; // hellbraun
+$danger:                            #d9534f !default; // rot
 $lighter:                           $gray-100 !default;
 $light:                             $gray-200 !default;
 $dark:                              $gray-800 !default;
 $darker:                            $gray-900 !default;
 
-$theme-colors: (
+   $theme-colors: (
     'primary':                      $primary,
     'secondary':                    $secondary,
     'tertiary':                     $tertiary,
@@ -48,27 +55,8 @@ $theme-colors: (
     'darker':                       $darker,
 ) !default;
 
-$navbar-light-color:                #006813;
-$navbar-light-active-color:         #ababab;
-$navbar-light-brand-hover-color:    #006813;
-
-$primary: #014876;
-$secondary: #72bf44;
-
-$footer-sections: () !default;
-$footer-sections: map-merge(
-                (
-                        content: (
-                                background:		$secondary,
-                                color:			$black,
-                                link-color:		$primary
-                        ),
-                        meta: (
-                                background:		$secondary,
-                                color:			$black,
-                                link-color:		$primary
-                        )
-                ),
-                $footer-sections
-);
-
+//    --bs-link-color: $primary; /* #014876 blau statt HEX dunkel grün*/
+//    --bs-link-color-rgb: 01 72 118; /*primary in dezimal statt rgb dunkel grün*/
+//    --bs-link-decoration: underline;
+//    --bs-link-hover-color: #6691ac; /* statt #465f4d HEX dunkel dunkel grün*/
+//    --bs-link-hover-color-rgb: 102,145, 172; /*statt rgb dunkel dunkel grün*/

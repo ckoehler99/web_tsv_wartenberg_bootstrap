@@ -1,0 +1,4 @@
+name: tsvwartenberg/tsvwartenberg-modern
+label: 'TSV Wartenberg Modern'
+dependencies:
+  - bootstrap-package/full

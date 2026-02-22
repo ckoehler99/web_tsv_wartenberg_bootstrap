@@ -1,0 +1,50 @@
+plugin:
+  bootstrap_package:
+    settings:
+      cssSourceMapping: true
+    view:
+      layoutRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Layouts/'
+      partialRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Partials/'
+      templateRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Templates/'
+  bootstrap_package_contentelements:
+    view:
+      layoutRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Layouts/ContentElements/'
+      partialRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Partials/ContentElements/'
+      templateRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Templates/ContentElements/'
+page:
+  logo:
+    file: 'EXT:tsvwartenberg_modern/Resources/Public/Images/logo.png'
+    fileInverted: 'EXT:tsvwartenberg_modern/Resources/Public/Images/logo.png'
+    alt: 'TSV Wartenberg'
+    linktitle: 'TSV Wartenberg'
+    width: 92
+  favicon:
+    file: 'EXT:tsvwartenberg_modern/Resources/Public/Icons/favicon.ico'
+  fluidtemplate:
+    layoutRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Layouts/Page/'
+    partialRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Partials/Page/'
+    templateRootPath: 'EXT:tsvwartenberg_modern/Resources/Private/Templates/Page/'
+  theme:
+    navigation:
+      type: top
+      style: default
+    breadcrumb:
+      enableLevel: 1
+    socialmedia:
+      enable: true
+      channels:
+        youtube:
+          label: YouTube
+          url: 'https://www.youtube.com/@TSVWartenberg'
+    footernavigation:
+      levels: 1
+      icon:
+        enable: false
+      enable: false
+    language:
+      enable: false
+    copyright:
+      enable: true
+      text: '<p class="mb-0"><a href="/footer/impressum-des-tsv-wartenbergs">Impressum</a> <span class="mx-3">|</span> <a href="/footer/datenschutz">Datenschutz</a> <span class="mx-3">|</span> <a href="/typo3">Login</a></p>'
+    meta:
+      navigationValue: '658,655'

@@ -1,43 +1,14 @@
 //
-// Footer – TSV Wartenberg
+// TSV Wartenberg v2 — Footer
+// Dunkelgruen statt Grau, mit Social Media Bereich.
 // --------------------------------------------------
 
-// Footer-Sections werden in _variables.scss definiert
-
-//
-// Footer Columns
-// --------------------------------------------------
-.footer-section-content-column-left,
-.footer-section-content-column-middle,
-.footer-section-content-column-right {
-    width: 100%;
-    @include media-breakpoint-up('md') {
-        width: calc(100% / 3);
-    }
-}
-
-//
-// Footer Sections Styling
-// --------------------------------------------------
-@each $name, $settings in $footer-sections {
-    .footer-section-#{$name} {
-        background-color: #{map-get($settings, 'background')};
-        --frame-color: #{map-get($settings, 'color')};
-        --frame-background: #{map-get($settings, 'background')};
-        --frame-link-color: #{map-get($settings, 'link-color')};
-        --frame-link-hover-color: #{darken(map-get($settings, 'link-color'), 3%)};
-    }
-}
-
-//
 // Footer Content Section
-// --------------------------------------------------
 .footer-section-content {
-    padding-top: 3rem;
-    padding-bottom: 2rem;
+    padding: 2.5rem 0;
 
     a {
-        transition: opacity 0.2s ease;
+        transition: color 0.2s ease, opacity 0.2s ease;
 
         &:hover {
             opacity: 0.85;
@@ -45,111 +16,40 @@
     }
 }
 
-//
-// Footer Section Meta
-// --------------------------------------------------
+// Footer Meta Section
 .footer-section-meta {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    background-color: darken($tsv-green-dark, 5%);
     border-top: 1px solid rgba($white, 0.1);
+    padding: 1rem 0;
 
-    @include media-breakpoint-up('sm') {
-        text-align: center;
-    }
-    .frame-inner > *:not(:first-child) {
-        margin-top: 1rem;
-    }
+    --frame-color: #{rgba($white, 0.8)};
+    --frame-background: #{darken($tsv-green-dark, 5%)};
+    --frame-link-color: #{$tsv-green-light};
+    --frame-link-hover-color: #{$white};
 }
 
-//
-// Footer Meta Navigation
-// --------------------------------------------------
-.footer-meta {
-    overflow: hidden;
-    .meta-menu {
-        margin: 0;
-        list-style: none;
-        padding-left: 0;
-        @include media-breakpoint-up('sm') {
-            margin-left: -.5em;
-            margin-right: -.5em;
-            > li {
-                display: inline-block;
-                padding-left: .5em;
-                padding-right: .5em;
-            }
-        }
-        .active a {
-            font-weight: bold;
-        }
-    }
+// Footer Container — kein graues row-Background mehr
+footer .container .row {
+    background-color: transparent;
 }
 
-//
-// Footer Language Menu
-// --------------------------------------------------
-.footer-language {
-    overflow: hidden;
-    .language-menu {
-        margin: 0;
-        list-style: none;
-        padding-left: 0;
-        @include media-breakpoint-up('sm') {
-            margin-left: -.5em;
-            margin-right: -.5em;
-            > li {
-                display: inline-block;
-                padding-left: .5em;
-                padding-right: .5em;
-            }
-        }
-        .active a {
-            font-weight: bold;
-        }
-    }
-}
-
-//
-// Footer Social Links
-// --------------------------------------------------
+// Social Media Links
 .footer-sociallinks {
-    @include media-breakpoint-up('sm') {
-        .sociallinks-list {
-            justify-content: center;
-        }
-    }
-    .sociallinks-item {
-        width: auto;
-    }
-    .sociallinks-link {
-        justify-content: center;
+    a {
+        display: inline-flex;
         align-items: center;
-        flex-shrink: 0;
+        justify-content: center;
         width: 2.75rem;
         height: 2.75rem;
-        color: inherit;
-        opacity: .75;
-        transition: all ease-in-out .2s;
-        background-color: rgba($white, 0.1);
         border-radius: 50%;
+        background: rgba($white, 0.1);
+        color: $white;
+        margin: 0 0.25rem;
+        transition: background-color 0.2s ease, transform 0.2s ease;
 
         &:hover {
-            opacity: 1;
-            background-color: rgba($white, 0.2);
+            background: rgba($white, 0.2);
             transform: translateY(-2px);
         }
-    }
-    .sociallinks-link-label {
-        display: none;
-    }
-}
-
-//
-// Footer Copyright
-// --------------------------------------------------
-.footer-copyright {
-    p {
-        margin-bottom: 0;
-        font-size: 0.875rem;
     }
 }

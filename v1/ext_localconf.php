@@ -1,11 +1,6 @@
 <?php
-defined('TYPO3') or die('Access denied.');
-/***************
- * Add default RTE configuration
- */
-$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['tsv_wartenberg_bootstrap'] = 'EXT:tsv_wartenberg_bootstrap/Configuration/RTE/Default.yaml';
 
-/***************
- * PageTS
- */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:tsv_wartenberg_bootstrap/Configuration/TsConfig/Page/All.tsconfig">');
+defined('TYPO3') or die('Access denied.');
+
+// Add default RTE configuration
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['tsvwartenberg'] = 'EXT:tsvwartenberg/Configuration/RTE/Default.yaml';

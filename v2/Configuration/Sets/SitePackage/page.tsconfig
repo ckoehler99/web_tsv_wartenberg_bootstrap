@@ -1,0 +1,17 @@
+@import './PageTsConfig/BackendLayouts/'
+
+RTE {
+    default {
+        preset = tsvwartenberg_modern
+    }
+}
+
+TCEFORM {
+    pages {
+    }
+    tt_content {
+    }
+}
+
+TCEMAIN {
+}

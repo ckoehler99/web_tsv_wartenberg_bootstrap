@@ -1,88 +1,71 @@
 //
-// Navbar – TSV Wartenberg
-// Bootstrap 5 kompatibel
+// TSV Wartenberg v2 — Navbar
+// Komplett in SCSS, kein separates custom.css noetig.
 // --------------------------------------------------
 
-// Navbar Brand
-.navbar-mainnavigation .navbar-brand-image img {
-    max-height: 100%;
-    transition: transform 0.2s ease;
-
-    &:hover {
-        transform: scale(1.02);
-    }
-}
-
-// Navbar Hintergrund & Links
+// Navbar Grundfarben
 .navbar-mainnavigation {
     background-color: $tsv-green;
-    box-shadow: 0 2px 8px rgba($black, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
+    .navbar-brand-image img {
+        max-height: 100%;
+    }
+
+    // Nav-Links
     .navbar-nav > li > .nav-link {
         color: $white;
         font-weight: 500;
-        padding: 0.75rem 1rem;
-        transition: color 0.2s ease, background-color 0.2s ease;
+        transition: background-color 0.2s ease, color 0.2s ease;
         border-radius: $border-radius-sm;
 
         &:hover,
         &:focus {
             color: $white;
+            background-color: rgba($white, 0.15);
+        }
+
+        // Aktive Seite: weiss auf dunkelgruen
+        &.active,
+        &.show {
+            color: $white;
+            background-color: $tsv-green-dark;
+        }
+
+        // Hover-Indikator unten
+        &:before {
             background-color: $tsv-green-dark;
         }
     }
 
-    .navbar-nav > .active > .nav-link,
-    .navbar-nav > .active > .nav-link:hover,
-    .navbar-nav > .active > .nav-link:focus {
-        color: $white;
-        background-color: $tsv-green-dark;
+    // Dropdown
+    .dropdown-menu {
+        border: none;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        border-radius: $border-radius;
+
+        .dropdown-item {
+            transition: background-color 0.15s ease;
+
+            &.active,
+            &:active {
+                color: $white;
+                background-color: $tsv-green-dark;
+            }
+
+            &:hover,
+            &:focus {
+                background-color: rgba($tsv-green, 0.08);
+            }
+        }
     }
 }
 
-// Nav-Link Underline-Effekt auf Desktop
-@include media-breakpoint-up('lg') {
-    .navbar-mainnavigation .navbar-nav > li > .nav-link::before {
-        background-color: $white;
-        height: 2px;
-        border-radius: 1px;
-    }
-}
-
-// Dropdown-Menü Styling
-.dropdown-menu {
-    border: none;
-    box-shadow: 0 4px 16px rgba($black, 0.12);
-    border-radius: $border-radius;
-    padding: 0.5rem 0;
-}
-
-.dropdown-item {
-    padding: 0.5rem 1rem;
-    transition: background-color 0.15s ease, color 0.15s ease;
-
-    &.active,
-    &:active {
-        color: $white;
-        background-color: $tsv-green-dark;
-    }
-
-    &:hover,
-    &:focus {
-        background-color: rgba($tsv-green, 0.08);
-        color: $tsv-green-dark;
-    }
-}
-
-// Navbar Toggler (Mobile)
+// Mobile Toggler
 .navbar-mainnavigation .navbar-toggler {
-    border-color: rgba($white, 0.3);
-
-    &:focus {
-        box-shadow: 0 0 0 0.2rem rgba($white, 0.25);
-    }
+    border-color: rgba($white, 0.4);
 
     .navbar-toggler-icon {
-        filter: brightness(0) invert(1);
+        filter: invert(1);
     }
 }
