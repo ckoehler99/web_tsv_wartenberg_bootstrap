@@ -24,15 +24,15 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            mkdir -p typo311-prod/typo3conf/ext/tsv_wartenberg_bootstrap/
-            mkdir -p typo311-prod/typo3conf/ext/tsv_wartenberg_bootstrap_v2/
+            mkdir -p typo311-prod/packages/tsvwartenberg/
+            mkdir -p typo311-prod/packages/tsvwartenberg_modern/
 
       - name: Deploy v1 (Original)
         uses: ckoehler99/ssh-scp-deploy@master
         with:
           src: ./repo/v1/*
           host: ${{ secrets.SSH_HOST }}
-          remote: typo311-prod/typo3conf/ext/tsv_wartenberg_bootstrap/
+          remote: typo311-prod/packages/tsvwartenberg/
           port: ${{ secrets.SSH_PORT }}
           user: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
@@ -42,7 +42,7 @@ jobs:
         with:
           src: ./repo/v2/*
           host: ${{ secrets.SSH_HOST }}
-          remote: typo311-prod/typo3conf/ext/tsv_wartenberg_bootstrap_v2/
+          remote: typo311-prod/packages/tsvwartenberg_modern/
           port: ${{ secrets.SSH_PORT }}
           user: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
