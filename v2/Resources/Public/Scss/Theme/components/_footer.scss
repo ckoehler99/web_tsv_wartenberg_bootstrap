@@ -62,24 +62,25 @@ footer .container .row {
     background-color: transparent;
 }
 
-// Social Media Icons — kompakter
+// Social Media Icons — gross und gut sichtbar
 .footer-sociallinks {
     a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 2.25rem;
-        height: 2.25rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.25rem;
         border-radius: 50%;
-        background: rgba($white, 0.12);
+        background: rgba($white, 0.15);
         color: $white !important;
-        margin: 0 0.2rem;
+        margin: 0 0.35rem;
         transition: background-color 0.2s ease, transform 0.2s ease;
 
         &:hover {
-            background: rgba($white, 0.25);
+            background: rgba($white, 0.3);
             color: $white !important;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
     }
 }
