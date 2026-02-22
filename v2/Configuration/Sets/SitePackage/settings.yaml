@@ -44,4 +44,4 @@ page:
       enable: true
       text: '<p class="mb-0"><a href="/footer/impressum-des-tsv-wartenbergs">Impressum</a> <span class="mx-3">|</span> <a href="/footer/datenschutz">Datenschutz</a> <span class="mx-3">|</span> <a href="/typo3">Login</a></p>'
     meta:
-      navigationValue: '658,655'
+      navigationValue: ''

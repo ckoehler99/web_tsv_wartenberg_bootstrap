@@ -106,13 +106,30 @@
 
     // ----------------------------------------------------------
     // Dropdown-Menue (Ebene 2) — weisser Hintergrund, dunkler Text
+    //
+    // WICHTIG: Die CSS-Variablen --bs-nav-link-color und
+    // --bs-navbar-color werden oben auf weiss gesetzt und vererben
+    // sich ins Dropdown. Hier muessen sie zurueckgesetzt werden,
+    // damit .nav-link { color: var(--bs-nav-link-color) } dunkel wird.
     // ----------------------------------------------------------
     .dropdown-menu {
+        // CSS-Variablen fuer Dropdown zuruecksetzen
+        --bs-nav-link-color: #{$gray-800};
+        --bs-nav-link-hover-color: #{$tsv-green-dark};
+        --bs-navbar-color: #{$gray-800};
+        --bs-navbar-hover-color: #{$tsv-green-dark};
+        --bs-navbar-active-color: #{$white};
+
         background-color: $white !important;
         border: 1px solid rgba(0, 0, 0, 0.08);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         border-radius: $border-radius;
         padding: 0.5rem 0;
+
+        // Alle nav-links im Dropdown dunkel
+        .nav-link {
+            color: $gray-800 !important;
+        }
 
         // Dropdown-Eintraege (BP: .nav-link-dropdown, NICHT .dropdown-item)
         .nav-link-dropdown {
@@ -122,17 +139,9 @@
             transition: background-color 0.15s ease, color 0.15s ease;
             text-decoration: none;
 
-            .nav-link-text {
-                color: inherit;
-            }
-
             &.active {
                 color: $white !important;
                 background-color: $tsv-green;
-
-                .nav-link-text {
-                    color: inherit;
-                }
             }
 
             &:hover,
@@ -173,13 +182,15 @@
 
 // ============================================================
 // 4. FALLBACK-SELEKTOREN
+//    Nur Hauptnavigation (Ebene 1) weiss — NICHT Dropdown-Inhalt!
+//    > li > .nav-link begrenzt auf direkte Kinder, nicht Dropdown.
 // ============================================================
-.navbar-default.navbar-mainnavigation .navbar-nav .nav-link {
+.navbar-default.navbar-mainnavigation .navbar-nav > li > .nav-link {
     color: $white !important;
 }
 
-.navbar-default.navbar-mainnavigation .navbar-nav .nav-link.active,
-.navbar-default.navbar-mainnavigation .navbar-nav .nav-link.show {
+.navbar-default.navbar-mainnavigation .navbar-nav > li > .nav-link.active,
+.navbar-default.navbar-mainnavigation .navbar-nav > li > .nav-link.show {
     color: $white !important;
     background-color: $tsv-green-dark;
 }
@@ -188,15 +199,16 @@
     border-color: $white !important;
 }
 
-// Dropdown-Inhalt: immer dunkle Schrift auf weiss
-.navbar-mainnavigation .dropdown-menu .nav-link {
+// Dropdown-Inhalt: dunkle Schrift auf weiss (hohe Spezifizitaet)
+.navbar-default.navbar-mainnavigation .dropdown-menu .nav-link {
     color: $gray-800 !important;
 }
-.navbar-mainnavigation .dropdown-menu .nav-link.active {
+.navbar-default.navbar-mainnavigation .dropdown-menu .nav-link.active {
     color: $white !important;
     background-color: $tsv-green;
 }
-.navbar-mainnavigation .dropdown-menu .nav-link:hover {
+.navbar-default.navbar-mainnavigation .dropdown-menu .nav-link:hover,
+.navbar-default.navbar-mainnavigation .dropdown-menu .nav-link:focus {
     color: $tsv-green-dark !important;
     background-color: rgba($tsv-green, 0.1);
 }
