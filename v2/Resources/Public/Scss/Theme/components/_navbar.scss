@@ -99,7 +99,9 @@
     // Oeffnet das Menue beim Ueberfahren, direkt unter dem Link
     // ----------------------------------------------------------
     @media (min-width: 992px) {
-        .navbar-nav > li.nav-item:hover > .dropdown-menu {
+        // Nur Dropdowns mit tatsaechlichem Inhalt anzeigen.
+        // BP rendert auch leere .dropdown-menu Divs (z.B. TSV Geschichte).
+        .navbar-nav > li.nav-item:hover > .dropdown-menu:has(.nav-link) {
             display: block;
             // Bootstrap setzt top:100% nur via [data-bs-popper] (Klick-Toggle).
             // Beim CSS-Hover fehlt das Attribut → Dropdown ueberlappt den Tab.
