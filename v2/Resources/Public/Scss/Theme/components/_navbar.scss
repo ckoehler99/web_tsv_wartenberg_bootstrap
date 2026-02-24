@@ -82,9 +82,12 @@
     // ----------------------------------------------------------
     // Dropdown-Toggle-Button (Pfeil neben dem Link)
     // ----------------------------------------------------------
-    // Dropdown-Toggle-Button (Pfeil) ausblenden — bei Hover-Dropdown ueberfluessig
-    .navbar-nav > li > .nav-link-toggle {
-        display: none;
+    // Dropdown-Toggle-Button (Pfeil) nur auf Desktop ausblenden.
+    // Auf Mobile wird er zum Aufklappen der Untermenues benoetigt.
+    @media (min-width: 992px) {
+        .navbar-nav > li > .nav-link-toggle {
+            display: none;
+        }
     }
 
     // ----------------------------------------------------------
