@@ -193,13 +193,33 @@
 }
 
 // ============================================================
-// 3. MOBILE TOGGLER
+// 3. MOBILE
 // ============================================================
 .navbar-mainnavigation .navbar-toggler {
     border-color: rgba($white, 0.4);
 
     .navbar-toggler-icon {
         filter: invert(1);
+    }
+}
+
+// 3. Ebene (verschachtelte Dropdowns) auf Mobile immer aufgeklappt.
+// Bootstrap JS oeffnet verschachtelte data-bs-toggle="dropdown" auf
+// kleinen Bildschirmen nicht zuverlaessig. Daher alle Unter-Dropdowns
+// auf Mobile direkt sichtbar machen, leicht eingerueckt.
+@media (max-width: 991.98px) {
+    .navbar-mainnavigation .dropdown-menu .dropdown-menu {
+        display: block !important;
+        position: static !important;
+        border: none;
+        box-shadow: none;
+        padding-left: 1rem;
+        background: transparent;
+    }
+
+    // Pfeil neben Ebene-3-Toggle ausblenden (nicht noetig wenn immer offen)
+    .navbar-mainnavigation .dropdown-menu .dropdown-toggle::after {
+        display: none;
     }
 }
 
