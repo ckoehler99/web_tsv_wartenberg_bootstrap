@@ -20,12 +20,12 @@
     --frame-link-hover-color: #{$white};
 }
 
-// Tertiary: Dunkel auf Hellgruen
+// Tertiary: Dunkel auf Ocker/Hellbraun (passend zu $tertiary)
 .frame-background-tertiary {
-    --frame-color: #{$gray-900};
-    --frame-background: #{lighten($tsv-green-light, 30%)};
-    --frame-link-color: #{$tsv-green-dark};
-    --frame-link-hover-color: #{darken($tsv-green-dark, 10%)};
+    --frame-color: #{$black};
+    --frame-background: #{$tertiary};
+    --frame-link-color: #{darken($tertiary, 25%)};
+    --frame-link-hover-color: #{darken($tertiary, 35%)};
 }
 
 // Quaternary: Dunkel auf Blassgelb (wie bisher)
